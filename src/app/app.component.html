@@ -1,0 +1,21 @@
+<div *ngFor="let note of notes; index as i" class="note" [ngStyle]="{'background-color': note.color}">
+  <textarea [(ngModel)]="note.content" placeholder="What's up?" class="content"></textarea>
+  <select [(ngModel)]="note.color" class="color-picker">
+    <option value="#90EE90">Light Green</option>
+    <option value="#ADD8E6">Light Blue</option>
+    <option value="#FFFFE0">Light Yellow</option>
+    <option value="#FFB6C1">Light Pink</option>
+  </select>
+  <button class="save-button" (click)="saveNote(note)">Save</button>
+  <select class="note-list" (change)="handleSelectChange($event)">
+    <option *ngFor="let savedNote of savedNotes | async" [value]="savedNote.id">{{savedNote.content}}</option>
+  </select>
+</div>
+
+
+
+
+
+
+
+
